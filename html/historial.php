@@ -67,7 +67,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-         <div class="col-12">
+         <div class="col-12"> 
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Historial de vehiculos</h3>
