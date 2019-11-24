@@ -6,7 +6,14 @@
   <title>ePark | Panel de control</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php include '../templates/head.php'; ?>
+  <?php 
+  include '../templates/head.php'; 
+  include '../build/js/conexion.html'; 
+  include '../build/estacionamiento_c.php';
+  ?>
+  <script type="text/javascript">
+    est=new Estacionamiento();
+  </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -71,7 +78,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3><script type="text/javascript">document.write(est.getAutos());</script></h3>
 
                 <p>New Orders</p>
               </div>
@@ -126,6 +133,36 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+          <div class="col-12"> 
+            <div class="card">
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+
+                  <tbody id="tablilla">
+
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--Contenido principal-->
+          <script type="text/javascript">
+  
+            
+            //est.actualizar("D","4","XH59K9NAJ5wBbB1PjX0Q");
+            
+            //est.agregar("B","4");
+            
+            //est.eliminar("txqcXBUHm2ec2FuGpYv0");
+            est.getDatos();
+            
+          </script>
+
+
           <!-- ./col -->
         </div>
         <!-- /.row -->
