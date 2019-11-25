@@ -18,7 +18,6 @@ class Historial {
         document.getElementById("historialTab").innerHTML= tblData;
     });
     }
-
 }
 historial = new Historial();
 historial.getData();

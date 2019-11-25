@@ -88,37 +88,12 @@
                   <thead>
                     <tr>
                       <th>Lote</th>
-                      <th>Tiempo ocupao'</th>
+                      <th>Tiempo Ocupado</th>
                       <th>Vehiculo</th>
                       <th>Total $</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>A2</td>
-                      <td>3hrs</td>
-                      <td>Camioneta</td>
-                      <td>90</td>
-                    </tr>
-                    <tr>
-                      <td>A5</td>
-                      <td>2hrs</td>
-                      <td>Motocicleta</td>
-                      <td>30</td>
-                    </tr>
-                    <tr>
-                      <td>C2</td>
-                      <td>1hrs</td>
-                      <td>Biclicleta</td>
-                      <td>20</td>
-                    </tr>
-
-                    <tr>
-                      <td>B2</td>
-                      <td>4hrs</td>
-                      <td>Automovil</td>
-                      <td>120</td>
-                    </tr>
+                  <tbody id="historialTab">
 
                   </tbody>
                 </table>
@@ -127,8 +102,6 @@
             </div>
             <!-- /.card -->
           </div>
-
-
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -153,3 +126,5 @@
 <?php include '../templates/footer.php'; ?>
 </body>
 </html>
+
+<script></script>
