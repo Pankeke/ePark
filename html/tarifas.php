@@ -8,6 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <?php include '../templates/head.php'; ?>
+
+  <!-- Firebase -->
+
+  <script src="/__/firebase/6.2.0/firebase-auth.js"></script>
+  <script src="/__/firebase/6.2.0/firebase-firestore.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -140,5 +146,9 @@
 
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
+
+<script src="../build/js/app.js">
+  
+</script>
 </body>
 </html>
