@@ -145,6 +145,14 @@
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
 
-<script src="conexion.js"></script>
+<script>
+  var tabla = document.getElementById('tabla');
+    db.collection("tarifas").onSnapshot((querySnapshot) => {
+      tabla.innerHTML = '';
+        querySnapshot.forEach((doc) => {
+            tabla.innerHTML +="<tr><td>"+doc.data().vehiculo+"</td><td>"+doc.data().tarifa+"<td></tr>"
+        });
+  });
+</script>
 </body>
 </html>
