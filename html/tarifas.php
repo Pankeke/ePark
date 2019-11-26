@@ -11,11 +11,10 @@
 
   <!-- Firebase -->
 
- <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
-
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -46,8 +45,11 @@
   </nav>
   <!-- /.navbar -->
 
+
   <!-- Main Sidebar Container -->
   <?php include '../templates/menu.html'; ?>
+
+  
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -56,7 +58,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Tarifas</h1>
+
+          <!--Agregar tarifas -->  
+          
+           <!-- <h1 class="m-0 text-dark">Tarifas</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -68,6 +73,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
 
     <!-- Main content -->
     <section class="content">
@@ -99,24 +105,10 @@
                       
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tabla">
                     <tr>
-                      <td>Automovil</td>
-                      <td>20</td>
-                      
-                    </tr>
-                    <tr>
-                      <td>Camioneta</td>
-                      <td>30</td>
-                    </tr>
-                    <tr>
-                      <td>Motocicleta</td>
-                      <td>15</td>
-                    </tr>
-
-                    <tr>
-                      <td>Bicicleta</td>
-                      <td>10</td>
+                      <td></td>
+                      <td></td>
                     </tr>
 
                   </tbody>
@@ -147,18 +139,15 @@
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
 
-<script src="../build/js/app.js">
-  
-</script>
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
 
+<script src="conexion.js"></script>
 </body>
 </html>
