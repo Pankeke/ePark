@@ -6,7 +6,17 @@
   <title>ePark | Panel de control</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php include '../templates/head.php'; ?>
+  <?php 
+  include '../templates/head.php'; 
+  include '../build/js/conexion.html'; 
+  include '../build/estacionamiento_c.php';
+  include '../build/clientes_c.php';
+  ?>
+  <script type="text/javascript">
+    est=new Estacionamiento();
+    client=new Clientes();
+  </script>
+  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -71,7 +81,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3 id="h3"><script type="text/javascript">est.getAutos();</script></h3>
 
                 <p>New Orders</p>
               </div>
@@ -126,6 +136,91 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+          <div class="col-12"> 
+            <div class="card">
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+
+                  <tbody id="tablilla">
+
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+<form method="get">
+      <div class="modal fade" id="modal-sm">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="titulo"></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                    <div class="col-sm-12">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Estatus</label>
+                        <select class="custom-select" name="estado">
+                          <option value="libre">Libre</option>
+                          <option value="ocupado">Ocupado</option>
+                          <option value="fs">Fuera de servicio</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Cliente</label>
+                        <select class="custom-select" name="estado" id="cl">
+                          
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Tarifa</label>
+                        <select class="custom-select" name="estado" id="taf">
+                          
+                        </select>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary">Guardar cambios</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+</form>
+          <!--Contenido principal-->
+          <script type="text/javascript">
+  
+            
+            
+            
+            //est.agregar("B","4");
+            
+            //est.eliminar("txqcXBUHm2ec2FuGpYv0");
+            est.getDatos();
+           
+            //est.actualizar("C","1","libre","TK4v8EOMvi45DL7voCHh","juan");
+            
+          </script>
+
+
           <!-- ./col -->
         </div>
         <!-- /.row -->
@@ -149,5 +244,6 @@
 
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
+<script src="../build/js/est_tomar_datos.js"></script>
 </body>
 </html>
