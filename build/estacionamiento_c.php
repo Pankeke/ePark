@@ -3,12 +3,12 @@
 	class Estacionamiento{
 
 
-		actualizar(lote,puesto,estado,doc,cliente) {
+		actualizar(lote,puesto,estado,doc) {
 			var actualiza={
 				"lote":lote,
 				"puesto":puesto,
-				"estado":estado,
-				"cliente":cliente
+				"estado":estado
+				
 			}
 			estacionamiento.doc(doc).set(actualiza).then(function() {
 	            console.log("Document successfully written!");
@@ -48,7 +48,7 @@
 			var html="";
 			//"<tr><td><img src='../build/img/car_b.png' style='cursor: pointer;' title='puto xd' id='s' class='s'></td></tr>"
 			//html=html.concat("pururururu");
-			console.log(html);
+			//console.log(html);
 			/*estacionamiento.doc("XH59K9NAJ5wBbB1PjX0Q").get().then(function(doc){
 				if(doc.exists)
 				{
