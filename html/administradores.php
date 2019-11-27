@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ePark | Panel de control</title>
+  <title>ePark | Paneel de control</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include '../templates/head.php'; ?>
@@ -70,7 +70,7 @@
          <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Usuarios registrados en el sistema</h3>
+                <h3 class="card-title">Administradores registrados en el sistema</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -84,7 +84,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
+                <table class="table table-hover" id="tablaAdmins">
                   <thead>
                     <tr>
                       <th>Correo</th>
@@ -146,5 +146,12 @@
 
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
+<script src="../build/js/Administrador.js"></script>
+
+<script type="text/javascript">
+  var admin = new Administrador();
+  admin.cargarTabla();
+</script>
+
 </body>
 </html>

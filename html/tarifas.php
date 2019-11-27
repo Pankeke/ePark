@@ -8,8 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <?php include '../templates/head.php'; ?>
+
+  <!-- Firebase -->
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -36,8 +41,11 @@
   </nav>
   <!-- /.navbar -->
 
+
   <!-- Main Sidebar Container -->
   <?php include '../templates/menu.html'; ?>
+
+  
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -46,7 +54,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Tarifas</h1>
+
+          <!--Agregar tarifas -->  
+          
+           <!-- <h1 class="m-0 text-dark">Tarifas</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -58,6 +69,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
 
     <!-- Main content -->
     <section class="content">
@@ -89,24 +101,10 @@
                       
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tabla">
                     <tr>
-                      <td>Automovil</td>
-                      <td>20</td>
-                      
-                    </tr>
-                    <tr>
-                      <td>Camioneta</td>
-                      <td>30</td>
-                    </tr>
-                    <tr>
-                      <td>Motocicleta</td>
-                      <td>15</td>
-                    </tr>
-
-                    <tr>
-                      <td>Bicicleta</td>
-                      <td>10</td>
+                      <td></td>
+                      <td></td>
                     </tr>
 
                   </tbody>
@@ -137,5 +135,24 @@
 
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
+
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
+<script>
+  var tabla = document.getElementById('tabla');
+    db.collection("tarifas").onSnapshot((querySnapshot) => {
+      tabla.innerHTML = '';
+        querySnapshot.forEach((doc) => {
+            tabla.innerHTML +="<tr><td>"+doc.data().vehiculo+"</td><td>"+doc.data().tarifa+"<td></tr>"
+        });
+  });
+</script>
 </body>
 </html>
