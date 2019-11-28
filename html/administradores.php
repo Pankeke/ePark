@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ePark | Paneel de control</title>
+  <title>ePark | Panel de control</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php include '../templates/head.php'; ?>
@@ -64,6 +64,7 @@
 
     <!-- Main content -->
     <section class="content">
+      <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#modalAgregar">Agregar</button>
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -130,6 +131,77 @@
         
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
+
+       <!-- modal-agregar -->
+      <div class="modal" role="dialog" id="modalAgregar">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Agregar Administrador</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="nombreAgregar">Nombre</label>
+              <input type="text" id="nombreAgregar" class="form-control mb-3">
+              <label for="telAgregar">teléfono</label>
+              <input type="text" id="telAgregar" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="admin.agregar()">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+      <!-- modal-eliminar -->
+      <div class="modal" role="dialog" id="modalEliminar">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Atención</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>¿Estas seguro de que deseas eliminar a este administrador?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="admin.eliminar()">Si</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <!-- modal-modificar -->
+    <div class="modal" role="dialog" id="modalModificar">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modificar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="nombreModificar">Nombre</label>
+              <input type="text" id="nombreModificar" placeholder="nombre" class="form-control mb-3">
+              <label for="telModificar">teléfono</label>
+              <input type="text" id="telModificar" placeholder="telefono" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnGuardar" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
     </section>
     <!-- /.content -->
   </div>

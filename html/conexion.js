@@ -28,13 +28,5 @@ var firebaseConfig = {
 	}
 
 	//function read(){
-		var tabla = document.getElementById('tabla');
-		db.collection("tarifas").onSnapshot((querySnapshot) => {
-			tabla.innerHTML = '';
-	    	querySnapshot.forEach((doc) => {
-	        	console.log(`${doc.id} => ${doc.data().vehiculo}`);
-
-	        	tabla.innerHTML +="<tr><td>"+doc.data().vehiculo+"</td><td>"+doc.data().tarifa+"<td></tr>"
-	    	});
-	});
+		
 	//}
