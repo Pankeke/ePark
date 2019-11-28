@@ -6,16 +6,15 @@
   <title>ePark | Panel de control</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php include '../templates/head.php';
-        include '../build/js/conexion.html';
-        include '../build/cont/historial_cont.php';
-  ?>
-<script type="text/javascript">
-  hist = new Historial();
-  hist.getData();
-</script>
+  <!-- Font Awesome -->
+  <?php include '../templates/head.php'; ?>
+
+  <!-- Firebase -->
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -33,10 +32,6 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-     
-      <!-- Notifications Dropdown Menu -->
-    
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
           <i class="fas fa-th-large"></i>
@@ -46,8 +41,11 @@
   </nav>
   <!-- /.navbar -->
 
+
   <!-- Main Sidebar Container -->
   <?php include '../templates/menu.html'; ?>
+
+  
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -56,12 +54,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Historial</h1>
+
+          <!--Agregar tarifas -->  
+          
+           <!-- <h1 class="m-0 text-dark">Tarifas</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Historial</li>
+              <li class="breadcrumb-item active">Tarifas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -69,15 +70,16 @@
     </div>
     <!-- /.content-header -->
 
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-         <div class="col-12"> 
+         <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Historial de vehiculos</h3>
+                <h3 class="card-title">Tarifa vehicular</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -94,13 +96,16 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Lote</th>
-                      <th>Tiempo Ocupado</th>
                       <th>Vehiculo</th>
-                      <th>Total $</th>
+                      <th>Tarifa</th>
+                      
                     </tr>
                   </thead>
-                  <tbody id="historialTab">
+                  <tbody id="tabla">
+                    <tr>
+                      <td></td>
+                      <td></td>
+                    </tr>
 
                   </tbody>
                 </table>
@@ -109,11 +114,10 @@
             </div>
             <!-- /.card -->
           </div>
+          
+
+
         </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        
-        <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -131,5 +135,24 @@
 
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
+
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
+<script>
+  var tabla = document.getElementById('tabla');
+    db.collection("tarifas").onSnapshot((querySnapshot) => {
+      tabla.innerHTML = '';
+        querySnapshot.forEach((doc) => {
+            tabla.innerHTML +="<tr><td>"+doc.data().vehiculo+"</td><td>"+doc.data().tarifa+"<td></tr>"
+        });
+  });
+</script>
 </body>
 </html>
