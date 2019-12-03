@@ -11,7 +11,7 @@
 				
 			}
 			estacionamiento.doc(doc).set(actualiza).then(function() {
-	            console.log("Document successfully written!");
+	            //console.log("Document successfully written!");
 	        })
 	        .catch(function(error) {
 	            console.error("Error writing document: ", error);
@@ -26,7 +26,7 @@
 				"estado":"activo"
 			}
 			estacionamiento.doc().set(agrega).then(function(){
-				console.log("Documento añadido");
+				//console.log("Documento añadido");
 			})
 			.catch(function(error){
 				console.error("Error al añadir documento:", error);
@@ -71,7 +71,7 @@
 
 						}
 						else if (doc.data().estado=="ocupado") {
-							html=html.concat("<td><img src='../build/img/car_r.png' puesto='"+doc.data().puesto+"' class='modificar' estado='"+doc.data().estado+"' lote='"+doc.data().lote+"' id='"+doc.id+"' data-toggle='modal' data-target='#modal-sm' style='cursor: pointer;' title='"+doc.data().lote+doc.data().puesto+" "+doc.data().estado+"'></td>");
+							html=html.concat("<td><img src='../build/img/car_r.png'  cliente='' puesto='"+doc.data().puesto+"' class='modificar' estado='"+doc.data().estado+"' lote='"+doc.data().lote+"' id='"+doc.id+"' data-toggle='modal' data-target='#modal-sm' style='cursor: pointer;' title='"+doc.data().lote+doc.data().puesto+" "+doc.data().estado+"'></td>");
 
 						}
 						else
@@ -128,7 +128,7 @@
 							tr=5;
 						}
 						if (doc.data().estado=="libre") {
-							html=html.concat("<td><img src='../build/img/car_b.png' puesto='"+doc.data().puesto+"' class='modificar' estado='"+doc.data().estado+"' lote='"+doc.data().lote+"' id='"+doc.id+"' data-toggle='modal' data-target='#modal-sm' style='cursor: pointer;' title='"+doc.data().lote+doc.data().puesto+" "+doc.data().estado+"'></td>");
+							html=html.concat("<td><img src='../build/img/car_b.png' puesto='"+doc.data().puesto+"' class='modificar ' estado='"+doc.data().estado+"' lote='"+doc.data().lote+"' id='"+doc.id+"' data-toggle='modal' data-target='#modal-sm' style='cursor: pointer;' title='"+doc.data().lote+doc.data().puesto+" "+doc.data().estado+"'></td>");
 
 						}
 						else if (doc.data().estado=="ocupado") {
@@ -158,51 +158,18 @@
 				});
 			
 			
-			/*estacionamiento.orderBy("lote").get().then(function(querySnapshot){
-				querySnapshot.forEach(function(doc){
-					if (doc.data().lote=="A") {
-						html=html.concat("<td><img src='../build/img/car_b.png' style='cursor: pointer;' title='"+doc.data().lote+doc.data().puesto+"' id='"+doc.id+"' lote='"+doc.data().lote+"' puesto='"+doc.data().puesto+"'></td>");
-
-
-					}
-					else if(doc.data().lote=="B"){
-						if(tr<2)
-						{
-							html=html.concat("<tr>");
-							tr=3;
-						}
-						html=html.concat("<td><img src='../build/img/car_b.png' style='cursor: pointer;' title='puto xd' id='"+doc.id+"' class='s'></td>");
-
-					}
-					else if(doc.data().lote=="C"){
-						if (tr<4) 
-						{
-							html=html.concat("</tr></tr>");
-							tr=4;
-						}
-
-					}
-					else if(doc.data.lote=="D"){
-
-					}
-					else{
-
-					}
-					console.log(doc.id," => ",doc.data().lote," => ",doc.data().puesto," => ",doc.data().estado);
-					document.getElementById("tablilla").innerHTML=(html);
-				});
-			});*/
+			
 		}
 		getAutos()
 		{
 
-			var total=1;
-			estacionamiento.onSnapshot(function(querySnapshot){
+			var total=0;
+			estacionamiento.get().then(function(querySnapshot){
 				querySnapshot.forEach(function(doc){
-					total=total+1;
-										
+					total++;
 				});
-			});	
+			});
+			//$("#h3").val(total);
 			document.getElementById("h3").innerHTML=(total);
 	        console.log(total);
 	       
