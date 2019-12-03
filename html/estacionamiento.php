@@ -15,6 +15,7 @@
   <script type="text/javascript">
     est=new Estacionamiento();
     client=new Clientes();
+
   </script>
   
 </head>
@@ -152,7 +153,7 @@
             </div>
             <!-- /.card -->
           </div>
-<form method="get">
+
       <div class="modal fade" id="modal-sm">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
@@ -168,43 +169,44 @@
                       <!-- select -->
                       <div class="form-group">
                         <label>Estatus</label>
-                        <select class="custom-select" name="estado">
-                          <option value="libre">Libre</option>
-                          <option value="ocupado">Ocupado</option>
-                          <option value="fs">Fuera de servicio</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Cliente</label>
-                        <select class="custom-select" name="estado" id="cl">
+                        <select class="custom-select" id="estado" name="estado">
                           
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 esconder">
                       <!-- select -->
-                      <div class="form-group">
-                        <label>Tarifa</label>
-                        <select class="custom-select" name="estado" id="taf">
+                      <div class="form-group esconder">
+                        <label class="esconder">Cliente</label>
+                        <select class="custom-select esconder" name="estado" id="cl">
                           
                         </select>
                       </div>
                     </div>
+                    <div class="col-sm-12 esconder">
+                      <!-- select -->
+                      <div class="form-group esconder">
+                        <label class="esconder">Tarifa</label>
+                        <select class="custom-select esconder" name="estado" id="taf">
+                          
+                        </select>
+                      </div>
+                    </div>
+
               </div>
             </div>
+            <input type="hidden" id="lote">
+            <input type="hidden" id="estacionamiento">
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar cambios</button>
+              <button type="button" class="btn btn-primary enviar">Guardar cambios</button>
             </div>
           </div>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
       </div>
-</form>
+
           <!--Contenido principal-->
           <script type="text/javascript">
   
@@ -245,5 +247,8 @@
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
 <script src="../build/js/est_tomar_datos.js"></script>
+<script src="../build/js/historial_c.js"></script>
+ 
+ 
 </body>
 </html>

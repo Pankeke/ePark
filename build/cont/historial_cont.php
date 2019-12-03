@@ -1,49 +1,34 @@
-<?php require_once("../js/conexion.html"); ?>
+<?php  ?>
 <script type="text/javascript">
 class Historial {
 
     getData() {
         var tblData = '';
-        estacionamiento.get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            var val = doc.data();
-            console.log(`${doc.id} => ${val.lote}${val.puesto}`);
+        historial.onSnapshot((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                var val = doc.data();
+                //console.log(`${doc.id} => Cliente ID: ${val.cliente} Tarifa ID: ${val.tarifa}`);
 
-            tblData += `
-            <tr>
-            <td>${val.lote}${val.puesto}</td>
-            </tr>
-            `;
+                var veh = "";
+                tarifa.doc(`${val.tarifa}`).get().then((doc) => {
+                    //console.log(`${doc.id} => Lote: ${val.lote} Tarifa/h: ${doc.data().tarifa} vehiculo: ${doc.data().vehiculo}`);
+                    
+                    tblData += "<tr>";
+                    tblData += `<td>${val.lote}</td>`;
+                    tblData += "<td>tiempo</td>";
+                    tblData += `<td>${doc.data().vehiculo}</td>`;
+                    tblData += "<td>total</td>";
+                    tblData +="</tr>";
+
+                    document.getElementById("historialTab").innerHTML= tblData;
+                });                
+            });
         });
-        document.getElementById("historialTab").innerHTML= tblData;
-    });
     }
 }
-historial = new Historial();
-historial.getData();
+//Query search by ID working:
+/*cliente.doc('OjgV0FOLGvlJJLOKPX04').get().then((doc) => {
+    var val = doc.data();
+    console.log(`${doc.id} => ${doc.data().nombre}`);
+});*/
 </script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h2>Prueba tabla con datos</h2>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>Lote</th>
-        <th>Tiempo ocupado</th>
-        <th>Vehiculo</th>
-        <th>Total $</th>
-    </tr>
-    </thead>
-    <tbody id="historialTab">
-
-    </tbody>
-</table>
-</body>
-</html>
