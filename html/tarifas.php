@@ -83,25 +83,28 @@
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                   <!-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search">-->
 
                     <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                       <button class="btn btn-success" data-toggle="modal" data-target="#modalAgregar">Agregar
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
+                <table class="table table-hover" id="tabla">
                   <thead>
                     <tr>
                       <th>Vehiculo</th>
                       <th>Tarifa</th>
+                      <th>Eliminar</th>
+                      <th>Editar</th>
                       
                     </tr>
                   </thead>
-                  <tbody id="tabla">
+                  <tbody>
                     <tr>
                       <td></td>
                       <td></td>
@@ -123,6 +126,76 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+   <!-- modal-eliminar -->
+      <div class="modal" role="dialog" id="modalEliminar">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Atención</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>¿Estas seguro de que deseas eliminar este registro?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="tarifa.eliminar()">Si</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- modal-modificar -->
+    <div class="modal" role="dialog" id="modalModificar">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modificar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="nombreModificar">Vehiculo</label>
+              <input type="text" id="vehiculoModificar" placeholder="vehiculo" class="form-control mb-3">
+              <label for="telModificar">Tarifa</label>
+              <input type="text" id="tarifaModificar" placeholder="tarifas" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnGuardar" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+    <!-- modal agregar -->
+    <div class="modal" role="dialog" id="modalAgregar">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Agregar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="vehiculoAgregar">Vehiculo</label>
+              <input type="text" id="vehiculoAgregar" placeholder="vehiculo" class="form-control mb-3">
+              <label for="tarifaAgregar">Tarifa</label>
+              <input type="text" id="tarifaAgregar" placeholder="tarifa" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnGuardar" class="btn btn-primary" onclick="tarifa.agregar()" data-dismiss="modal">Guardar Cambios</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
   
 
   <!-- Control Sidebar -->
@@ -145,14 +218,11 @@
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
 
-<script>
-  var tabla = document.getElementById('tabla');
-    db.collection("tarifas").onSnapshot((querySnapshot) => {
-      tabla.innerHTML = '';
-        querySnapshot.forEach((doc) => {
-            tabla.innerHTML +="<tr><td>"+doc.data().vehiculo+"</td><td>"+doc.data().tarifa+"<td></tr>"
-        });
-  });
+<script src="../build/js/Tarifas.js"></script>
+
+<script type="text/javascript">
+    var tarifa = new Tarifas();
+    tarifa.cargarTabla();
 </script>
 </body>
 </html>
