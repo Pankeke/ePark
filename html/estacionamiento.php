@@ -192,6 +192,19 @@
                         </select>
                       </div>
                     </div>
+                    <div class="col-sm-12 esconder">
+                      <!-- select -->
+                      <div class="form-group esconder">
+                        <label class="esconder">Tiempo</label>
+                        <select class="custom-select esconder" name="time" id="time">
+                          <option value="0.50">30 Minutos</option>
+                          <option value="1">1 Hora</option>
+                          <option value="2">2 Horas</option>
+                          <option value="3">3 Horas</option>
+                          
+                        </select>
+                      </div>
+                    </div>
 
               </div>
             </div>

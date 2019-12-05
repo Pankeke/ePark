@@ -9,6 +9,7 @@ $(document).ready(function() {
 		var tiempo= new Date();
 		var hora=tiempo.getHours();
 		var minuto=tiempo.getMinutes();
+		var tiempo_=$('#time').val();
 		var fecha=dayNames[tiempo.getDay()]+" "+tiempo.getMonth()+" "+hora+":"+minuto;
 		
 		
@@ -20,8 +21,8 @@ $(document).ready(function() {
 				"entrada_hr":hora,
 				"entrada_mn":minuto,
 				"fecha":fecha,
-				"salida_hr":"NA",
-				"salida_mn":"NA"
+				"tiempo":tiempo_
+				
 			}
 			
 			
@@ -46,36 +47,15 @@ $(document).ready(function() {
 		}
 		else if(estado=='libre')
 		{
-			var datos={
-				"salida_hr":hora,
-				"salida_mn":minuto
-			}
-			var kk=0;
-			
-			//console.log(cliente);
-			var pro=historial.where("cliente","==",cliente);
-			pro=historial.where("tarifa","==",tarifa);
-			pro=historial.where("lote","==",lote);
-			pro.get().then(function(querySnapshot){
-				querySnapshot.forEach(function(doc){
-					kk++;
-					var id=doc.id;
-					console.log("ID: "+kk+" "+doc.id);
-					
-				});
-			});
-			historial.doc(id).set(datos,{merge:true}).then(function(){
-				est.actualizar(lote[0],lote[1],estado,id);
-				$("#modal-sm").modal('hide');
-				toastr.success('Lote '+lote+' actualizado');
-			})
-			.catch(function(error) {
-			    console.error("Error writing document: ", error);
-			});
-			
+			est.actualizar(lote[0],lote[1],estado,id);
+			$("#modal-sm").modal('hide');
+			toastr.success('Lote '+lote+' actualizado');
 			
 		}
 		else{
+			est.actualizar(lote[0],lote[1],estado,id);
+			$("#modal-sm").modal('hide');
+			toastr.success('Lote '+lote+' actualizado');
 
 		}
 		
