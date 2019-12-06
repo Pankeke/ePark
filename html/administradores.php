@@ -64,7 +64,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#modalAgregar">Agregar</button>
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -72,15 +71,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Administradores registrados en el sistema</h3>
-
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
-                  </div>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -128,33 +119,14 @@
         </div>
         <!-- /.row -->
         <!-- Main row -->
+
+        <button type="button" class="btn btn-success btn-lg btn-block mt-4" data-toggle="modal" 
+        data-target="#modalModificar" onclick="admin.modificar()">Modificar mi información</button>
+
+        <button type="button" data-toggle="modal" data-target="#modalEliminar" class="btn btn-danger btn-lg btn-block">Eliminar mi cuenta de administrador</button>
         
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
-
-       <!-- modal-agregar -->
-      <div class="modal" role="dialog" id="modalAgregar">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Agregar Administrador</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <label for="nombreAgregar">Nombre</label>
-              <input type="text" id="nombreAgregar" class="form-control mb-3">
-              <label for="telAgregar">teléfono</label>
-              <input type="text" id="telAgregar" class="form-control">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="admin.agregar()">Guardar</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            </div>
-          </div>
-        </div>
-    </div>
 
       <!-- modal-eliminar -->
       <div class="modal" role="dialog" id="modalEliminar">
@@ -167,7 +139,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <p>¿Estas seguro de que deseas eliminar a este administrador?</p>
+              <p>¿Estas seguro de que deseas eliminar tu cuenta?</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="admin.eliminar()">Si</button>
@@ -223,6 +195,7 @@
 <script type="text/javascript">
   var admin = new Administrador();
   admin.cargarTabla();
+  admin.observador();
 </script>
 
 </body>
