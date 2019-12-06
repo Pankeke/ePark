@@ -5,7 +5,35 @@ class Administrador{
 		this.adminsArr = [];
 
 		this.idEliminar = 0;
+
+		this.correo = '';
+
+		this.nombre = '';
 	}
+
+	observador() {
+		firebase.auth().onAuthStateChanged(function(user) {
+
+		  if (user) {
+		    var displayName = user.displayName;
+		    var email = user.email;
+		    var emailVerified = user.emailVerified;
+		    var photoURL = user.photoURL;
+		    var isAnonymous = user.isAnonymous;
+		    var uid = user.uid;
+		    var providerData = user.providerData;
+
+		    var display = document.getElementById("userDisplay");
+		    display.innerHTML = email;
+		    this.correo = email;
+
+		    this.correo = email;
+		  } else { 
+		  	console.log("entre al else");
+		  	window.location = "../index.php" }
+
+		});
+}
 
 	getAdmins(){
 		var iterador = 0;
@@ -29,7 +57,7 @@ class Administrador{
 
 		db.collection("admins").onSnapshot((querySnapshot) => {
     		tabla.innerHTML = 
-    		'<thead> <tr> <th>Nombre</th> <th>Telefono</th> <th>Eliminar</th> <th>Modificar</th> </tr> </thead>';
+    		'<thead> <tr> <th>Nombre</th> <th>Telefono</th> <th>Email</th> </tr> </thead>';
 
     		querySnapshot.forEach((doc) => {
         		tabla.innerHTML += 
@@ -37,16 +65,7 @@ class Administrador{
 	        	`<tr>
 			     <td scope="row">${doc.data().nombre}</td>
 			     <td scope="row">${doc.data().telefono}</td>
-			     <td>
-				     <button class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar"
-				      onclick="admin.setIdEliminar('${doc.id}')">Eliminar
-				      </button>
-			      </td>
-			     <td>
-			     	<button class="btn btn-warning" data-toggle="modal" data-target="#modalModificar"
-			     	onclick="admin.modificar('${doc.id}', '${doc.data().nombre}' ,'${doc.data().telefono}')">Modificar
-			     	</button>
-			     </td>
+			     <td scope="row">${doc.data().email}</td>
 			     </tr>`
     		});
 		});
@@ -58,37 +77,124 @@ class Administrador{
 
 	agregar(){
 
-		var nombre = document.getElementById("nombreAgregar")
-		var telefono = document.getElementById("telAgregar")
+		var nombre = document.getElementById("nombreAgregar").value;
+		var telefono = document.getElementById("telAgregar").value;
+		var email = document.getElementById("emailAgregar").value;
+		var password = document.getElementById("passwordAgregar").value;
+		var passwordConf = document.getElementById("passwordConfirmar").value;
 
-		db.collection("admins").add({
-	        nombre: nombre.value,
-	        telefono: telefono.value
-	    })
-	    .then(function(docRef) {
-	    })
-	    .catch(function(error) {
-	        console.error("Error adding document: ", error);
-	    });
+
+		if (password !== passwordConf) {
+			var displayRegister = document.getElementById("displayRegister");
+
+			displayRegister.innerHTML = 'Las contraseñas ingresadas no coinciden'
+
+			return;
+		}
+
+		firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
+
+			var passEnc = CryptoJS.AES.encrypt(password,"clave").toString();
+			console.log(passEnc);
+
+			db.collection("admins").doc(email).set({
+		        nombre: nombre,
+		        telefono: telefono,
+		        email: email,
+		        password: passEnc
+		    })
+		    .then(function(docRef) {
+
+		    	telefono = "";
+		    	email = "";
+		    	password = "";
+		    	passwordConf = "";
+
+		    	window.location = "html/administradores.php"
+		    })
+		    .catch(function(error) {
+		        console.error("Error adding document: ", error);
+		    });
+
+		})
+		.catch(function(error) {
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+
+		  var displayRegister = document.getElementById("displayRegister");
+
+		  displayRegister.innerHTML = errorMessage;
+		  console.log(errorMessage);
+		});
+	}
+
+	signIn(){
+		var correo = document.getElementById("correoLogin").value;
+		var password = document.getElementById("passwordLogin").value;
+
+		firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
+			window.location = "html/administradores.php"
+		}).catch(function(error) {
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+
+		  var display = document.getElementById("display");
+		  display.innerHTML = errorMessage;
+
+		});
+	}
+
+	signOut(){
+		firebase.auth().signOut().then(function() {
+		}, function(error) {
+		  console.error('Sign Out Error', error);
+		});
 	}
 
 	eliminar(){
-		db.collection("admins").doc(admin.idEliminar).delete().then(function() {
-        	
+		var user = firebase.auth().currentUser;
+
+		db.collection("admins").doc(user.email).delete().then(function() {
+			toastr.success('Se elimino el registro exitosamente');
     	}).catch(function(error) {
         	console.error("Error removing document: ", error);
-    	});
+    		});
+
+    	user.delete().then(function() {
+
+		  window.location = "../index.php";
+
+		}).catch(function(error) {
+
+		  console.log("error");
+
+		});
 	}
 
-	modificar(id, nombre, tel){
-		document.getElementById("nombreModificar").value = nombre;
-		document.getElementById("telModificar").value = tel;
+	modificar(){
+		var user = firebase.auth().currentUser;
+
+		var docRef = db.collection("admins").doc(user.email);
+
+		docRef.get().then(function(doc) {
+		    if (doc.exists) {
+		        var nombredb = doc.data().nombre;
+		        var teldb = doc.data().telefono;
+
+		        document.getElementById("nombreModificar").value = nombredb;
+				document.getElementById("telModificar").value = teldb;
+		    } else {
+		        console.log("No such document!");
+		    }
+		}).catch(function(error) {
+    			console.log("Error getting document:", error);
+		});
 
 		var boton = document.getElementById("btnGuardar");
 
 		boton.onclick = function(){
 
-			var ref = db.collection("admins").doc(id);
+			var ref = db.collection("admins").doc(user.email);
 
 	        var nombre = document.getElementById('nombreModificar').value;
 	        var telefono = document.getElementById('telModificar').value;
@@ -98,7 +204,7 @@ class Administrador{
             telefono: telefono
         })
         .then(function() {
-            
+            toastr.success('Se modifico a ' + nombre + " exitosamente");
         })
         .catch(function(error) {
             // The document probably doesn't exist.
