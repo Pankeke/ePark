@@ -1,0 +1,91 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span id="span" class="brand-text font-weight-light"><strong>SIGEV</strong></span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+    
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview">
+            <a class="nav-link">
+              <p id="userDisplay" style="font-size: 80%">
+                cuenta
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="../html/estacionamiento.php" class="nav-link">
+              <i class="nav-icon fas fa-car-alt"></i>
+              <p>
+                Estacionamiento
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="../html/tarifas.php" class="nav-link ">
+              <i class="nav-icon fas fa-money-bill-alt"></i>
+              <p>
+                Tarifas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="../html/historial.php" class="nav-link ">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Historial
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="../html/administradores.php" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Administradores
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview" style="background-color: red;">
+            <a class="nav-link" onclick="admin.signOut()">
+              <i class="nav-icon fas fa-window-close"></i>
+              <p style="color:white;">
+                Cerrar sesión
+              </p>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDbIcnNoh6_pmkRWNUlbZY5-hLxQJklskc",
+                authDomain: "e-park-71416.firebaseapp.com",
+                databaseURL: "https://e-park-71416.firebaseio.com",
+                projectId: "e-park-71416",
+                storageBucket: "e-park-71416.appspot.com",
+                messagingSenderId: "1048067032791",
+                appId: "1:1048067032791:web:d5c50a8f3872b781059292",
+                measurementId: "G-WLL0HHBVY4"
+              };
+
+            firebase.initializeApp(config);
+            const db = firebase.firestore();
+            db.settings({ timestampsInSnapshots: true }); 
+        </script>
+
+        
+
