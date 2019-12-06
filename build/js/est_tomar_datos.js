@@ -4,6 +4,7 @@ $(document).ready(function() {
 		var lote=$(this).attr('lote');
 		var estado=$(this).attr('estado');
 		var puesto=$(this).attr('puesto');
+		
 		//console.log(id);
 		//var modal="<p>One fine body&hellip;</p>";
 		//document.getElementById("modal").innerHTML=modal;
@@ -21,24 +22,28 @@ $(document).ready(function() {
 			est_html=est_html.concat("<option value='fs' class='remove'>Fuera de servicio</option>");
 			$('#estado').prepend(est_html);
 			est_html="";
+
+			$('.esconder').hide();
 		}
 		else if(estado=="libre")
 		{
 			$('option').remove('.remove');
-			est_html=est_html.concat("<option value='libre' selected>Libre</option>");
-			est_html=est_html.concat("<option value='ocupado'>Ocupado</option>");
-			est_html=est_html.concat("<option value='fs'>Fuera de servicio</option>");
+			est_html=est_html.concat("<option value='libre' selected class='remove'>Libre</option>");
+			est_html=est_html.concat("<option value='ocupado' class='remove'>Ocupado</option>");
+			est_html=est_html.concat("<option value='fs' class='remove'>Fuera de servicio</option>");
 			$('#estado').prepend(est_html);
 			est_html="";
+			$('.esconder').show();
 		}
 		else
 		{
 			$('option').remove('.remove');
-			est_html=est_html.concat("<option value='libre'>Libre</option>");
-			est_html=est_html.concat("<option value='ocupado'>Ocupado</option>");
-			est_html=est_html.concat("<option value='fs' selected>Fuera de servicio</option>");
+			est_html=est_html.concat("<option value='libre' class='remove'>Libre</option>");
+			est_html=est_html.concat("<option value='ocupado' class='remove'>Ocupado</option>");
+			est_html=est_html.concat("<option value='fs' selected class='remove'>Fuera de servicio</option>");
 			$('#estado').prepend(est_html);
 			est_html="";
+			$('.esconder').hide();
 
 		}
 		

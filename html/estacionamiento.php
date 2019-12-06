@@ -174,20 +174,33 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 esconder">
                       <!-- select -->
-                      <div class="form-group">
-                        <label>Cliente</label>
-                        <select class="custom-select" name="estado" id="cl">
+                      <div class="form-group esconder">
+                        <label class="esconder">Cliente</label>
+                        <select class="custom-select esconder" name="estado" id="cl">
                           
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 esconder">
                       <!-- select -->
-                      <div class="form-group">
-                        <label>Tarifa</label>
-                        <select class="custom-select" name="estado" id="taf">
+                      <div class="form-group esconder">
+                        <label class="esconder">Tarifa</label>
+                        <select class="custom-select esconder" name="estado" id="taf">
+                          
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 esconder">
+                      <!-- select -->
+                      <div class="form-group esconder">
+                        <label class="esconder">Tiempo</label>
+                        <select class="custom-select esconder" name="time" id="time">
+                          <option value="0.50">30 Minutos</option>
+                          <option value="1">1 Hora</option>
+                          <option value="2">2 Horas</option>
+                          <option value="3">3 Horas</option>
                           
                         </select>
                       </div>
