@@ -11,6 +11,7 @@
   include '../build/js/conexion.html'; 
   include '../build/estacionamiento_c.php';
   include '../build/clientes_c.php';
+  include '../build/cont/encriptar.php';
   ?>
   <script type="text/javascript">
     est=new Estacionamiento();
@@ -261,7 +262,7 @@
 <?php include '../templates/footer.php'; ?>
 <script src="../build/js/est_tomar_datos.js"></script>
 <script src="../build/js/historial_c.js"></script>
- 
+
  
 </body>
 </html>

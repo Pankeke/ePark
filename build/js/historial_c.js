@@ -11,7 +11,10 @@ $(document).ready(function() {
 		var minuto=tiempo.getMinutes();
 		var tiempo_=$('#time').val();
 		var fecha=dayNames[tiempo.getDay()]+" "+tiempo.getMonth()+" "+hora+":"+minuto;
-		
+		/*var prueba="<?php $clack=encrypt('fdsfsd','GARLIK');?>";
+	    var codificado="<?php $clock=decrypt($clack,'GARLIK');?>";
+	    alert("<?php echo $clack; ?>");
+	    alert("<?php echo $clock; ?>");*/
 		
 		if (estado=="ocupado") {
 			var agrega_hist={
