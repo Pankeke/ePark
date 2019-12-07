@@ -14,13 +14,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a class="nav-link">
-              <p id="userDisplay" style="font-size: 80%">
-                cuenta
-              </p>
-            </a>
-          </li>
+         
           <li class="nav-item has-treeview">
             <a href="../html/estacionamiento.php" class="nav-link">
               <i class="nav-icon fas fa-car-alt"></i>
@@ -57,8 +51,24 @@
           <li class="nav-item has-treeview" style="background-color: red;">
             <a class="nav-link" onclick="admin.signOut()"></a>
             <i class="nav-icon fas fa-users"></i>
-          </li>
           
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link" onclick="admin.signOut()">
+              <i class="nav-icon fas fa-window-close"></i>
+              <p>
+                Cerrar sesión
+              </p>
+            </a>
+          </li>
+         
+
+           <li class="nav-item has-treeview">
+            <a class="nav-link">
+              <p id="userDisplay" style="font-size: 80%">
+                
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

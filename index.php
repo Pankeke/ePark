@@ -92,11 +92,11 @@
         <div class="row">
           
           <!-- /.col -->
-          <form action="html/administradores.php">
+          <form action="html/administradores.php" class="col-sm-12">
             <div class="col-12">
-              <center>
-                <input onclick="admin.signIn()" value="Iniciar sesión" class="btn btn-primary btn-block">
-              </center>
+              <button class="btn btn-primary btn-block" onclick="admin.signIn()">Iniciar sesión</button>
+               
+             
             </div>
           </form>
           <!-- /.col -->
