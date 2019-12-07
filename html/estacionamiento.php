@@ -263,6 +263,13 @@
 <script src="../build/js/est_tomar_datos.js"></script>
 <script src="../build/js/historial_c.js"></script>
 
+<script src="../build/js/Administrador.js"></script>
+
+  <script type="text/javascript">
+  var admin = new Administrador();
+  admin.observador();
+</script>
+
  
 </body>
 </html>
