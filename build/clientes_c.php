@@ -1,13 +1,20 @@
-<?php include 'js/conexion.html';?>
+<?php 
+include 'js/conexion.html';
+?>
 <script type="text/javascript">
-	class Clientes{
+	class Cliente{
 		
 		agregar(nombre,apellido,sexo){
-
+			var nomb = (CryptoJS.AES.encrypt(nombre, "GARLIK")).toString();
+			var ape=(CryptoJS.AES.encrypt(apellido, "GARLIK")).toString();
+			var sex=(CryptoJS.AES.encrypt(sexo, "GARLIK")).toString();
+			//var desem=(CryptoJS.AES.decrypt(nomb, "GARLIK")).toString(CryptoJS.enc.Utf8);
+			//var nomb=encriptar(nombre,"GARLIK");
+			
 			var clientes={
-				"nombre":nombre,
-				"apellido":apellido,
-				"sexo":sexo
+				"nombre":nomb,
+				"apellido":ape,
+				"sexo":sex
 			}
 			cliente.doc().set(clientes).then(function(){
 				console.log("Documento añadido");
@@ -17,6 +24,8 @@
 				});
 
 		}
+		
+
 	}
 	
 </script>

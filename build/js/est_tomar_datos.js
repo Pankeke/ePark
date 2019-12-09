@@ -51,7 +51,7 @@ $(document).ready(function() {
 		cliente.onSnapshot(function(querySnapshot){
 			querySnapshot.forEach(function(doc){
 				//console.log(doc.data().nombre+" => "+doc.id);
-				$('#cl').prepend("<option value='"+doc.id+"' class='remove'>"+doc.data().nombre+" "+doc.data().apellido+"</option>");
+				$('#cl').prepend("<option value='"+doc.id+"' class='remove'>"+(CryptoJS.AES.decrypt(doc.data().nombre, "GARLIK")).toString(CryptoJS.enc.Utf8)+" "+(CryptoJS.AES.decrypt(doc.data().apellido, "GARLIK")).toString(CryptoJS.enc.Utf8)+"</option>");
 			});
 		});
 		tarifa.onSnapshot(function(querySnapshot){

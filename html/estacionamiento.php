@@ -11,13 +11,15 @@
   include '../build/js/conexion.html'; 
   include '../build/estacionamiento_c.php';
   include '../build/clientes_c.php';
-  include '../build/cont/encriptar.php';
+
   ?>
+
   <script type="text/javascript">
     est=new Estacionamiento();
-    client=new Clientes();
+    clientela=new Cliente();
 
   </script>
+
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -69,7 +71,9 @@
               <li class="breadcrumb-item active">Estacionamiento</li>
             </ol>
           </div><!-- /.col -->
+
         </div><!-- /.row -->
+        <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#modal-lg">Registrar cliente</button>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -220,19 +224,55 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+      <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Registrar cliente</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre(s)</label>
+                    <input type="text" class="form-control" id="nombre_cliente" placeholder="Ingrese el nombre del cliente">
+                  </div>
+                  <div class="form-group">
+                    <label for="apellido">Apellido(s)</label>
+                    <input type="text" class="form-control" id="apellido_cliente" placeholder="Ingrese el apellido del cliente">
+                  </div>
+                  <div class="col-sm-12">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Sexo</label>
+                        <select class="custom-select" id="sexo">
+                          <option value="Masculino">Masculino</option>
+                          <option value="Femenino">Femenino</option>
+                          <option value="Otro(s)">Otro(s)</option>
+                         
+                        </select>
+                      </div>
+                    </div>
+                  
+                  
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary guardar">Guardar cliente</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 
           <!--Contenido principal-->
           <script type="text/javascript">
-  
-            
-            
-            
-            //est.agregar("B","4");
-            
-            //est.eliminar("txqcXBUHm2ec2FuGpYv0");
+            //clientela.agregar("Jose","Escobedo Garcia","Otro");
             est.getDatos();
-           
-            //est.actualizar("C","1","libre","TK4v8EOMvi45DL7voCHh","juan");
             
           </script>
 
@@ -262,6 +302,7 @@
 <?php include '../templates/footer.php'; ?>
 <script src="../build/js/est_tomar_datos.js"></script>
 <script src="../build/js/historial_c.js"></script>
+<script src="../build/js/agregar_cliente.js"></script>
 
  
 </body>
