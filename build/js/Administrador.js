@@ -12,6 +12,7 @@ class Administrador{
 	}
 
 	observador() {
+		 
 		firebase.auth().onAuthStateChanged(function(user) {
 
 		  if (user) {
@@ -26,11 +27,9 @@ class Administrador{
 		    var display = document.getElementById("userDisplay");
 		    display.innerHTML = email;
 		    this.correo = email;
-
-		    this.correo = email;
 		  } else { 
-		  	console.log("entre al else");
-		  	window.location = "../index.php" }
+		  	window.location = "../index.php" 
+		  }
 
 		});
 }
@@ -95,7 +94,6 @@ class Administrador{
 		firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
 
 			var passEnc = CryptoJS.AES.encrypt(password,"clave").toString();
-			console.log(passEnc);
 
 			db.collection("admins").doc(email).set({
 		        nombre: nombre,
@@ -133,7 +131,9 @@ class Administrador{
 		var password = document.getElementById("passwordLogin").value;
 
 		firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
+
 			window.location = "html/administradores.php"
+			
 		}).catch(function(error) {
 		  var errorCode = error.code;
 		  var errorMessage = error.message;

@@ -209,20 +209,18 @@
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
 
-<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
-
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
-
 <script src="../build/js/Tarifas.js"></script>
+<script src="../build/js/Administrador.js"></script>
 
 <script type="text/javascript">
     var tarifa = new Tarifas();
     tarifa.cargarTabla();
 </script>
+
+<script type="text/javascript">
+  var admin = new Administrador();
+  admin.observador();
+</script>
+
 </body>
 </html>

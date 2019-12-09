@@ -10,6 +10,7 @@
         include '../build/js/conexion.html';
         include '../build/cont/historial_cont.php';
   ?>
+
 <script type="text/javascript">
   hist = new Historial();
   hist.getData();
@@ -116,5 +117,12 @@
 <!-- ./wrapper -->
 <!-- jQuery -->
 <?php include '../templates/footer.php'; ?>
+
+ <script src="../build/js/Administrador.js"></script>
+  <script type="text/javascript">
+    var admin = new Administrador();
+    admin.observador();
+  </script>
+  
 </body>
 </html>
